@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 // import { useDispatch } from "react-redux";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
@@ -10,14 +10,16 @@ import Home from "./Pages/Home";
 import Team from "../src/Pages/Team";
 import Edit from "./Pages/Edit";
 import Contact from "./Pages/Contact";
+import { current } from "./JS/Actions/user";
+import { useDispatch } from "react-redux";
 
 function App() {
-  // const dispatch = useDispatch();
-  // useEffect(() => {
-  //   if (localStorage.getItem("token")) {
-  //     dispatch(current());
-  //   }
-  // }, [dispatch]);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      dispatch(current());
+    }
+  }, [dispatch]);
 
   return (
     <div className="App">

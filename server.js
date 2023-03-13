@@ -11,6 +11,10 @@ connectDB();
 
 app.use("/api/team", require("./routes/team"));
 
+app.use("/api/user", require("./routes/user"));
+
+app.use("api/admin", require("./routes/admin"));
+
 const PORT = process.env.PORT;
 
 app.listen(PORT, (error) => {
