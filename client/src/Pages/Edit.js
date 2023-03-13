@@ -1,26 +1,32 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Form } from "react-bootstrap";
-import { useDispatch } from "react-redux";
-import TeamList from "../Components/TeamList";
-import { addTeam } from "../JS/Actions/team";
-import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useMatch, useNavigate } from "react-router-dom";
+import { editTeam, getTeam } from "../JS/Actions/team";
 
-const Team = () => {
+const Edit = () => {
   const [newTeam, setNewTeam] = useState({ name: "", lastName: "", poste: "" });
   const dispatch = useDispatch();
+  const teamToGet = useSelector((state) => state.teamReducer.teamToGet);
+  const match = useMatch("/edit/:id");
+  const navigate = useNavigate();
   const handleChange = (e) => {
     setNewTeam({ ...newTeam, [e.target.name]: e.target.value });
-  }
-    const add = () => {
-      dispatch(addTeam(newTeam));
-    };
-  
+  };
+  useEffect(() => {
+    dispatch(getTeam(match.params.id));
+  });
+  const handleEdit = () => {
+    dispatch(editTeam(match.params));
+    navigate(-1);
+  };
+
   return (
     <div>
       <Form.Label>Add team </Form.Label>
       <Form.Control
         type="text"
-        placeholder="Enter a name.."
+        placeholder={`${teamToGet.name}`}
         name="name"
         value={newTeam.name}
         onChange={handleChange}
@@ -28,7 +34,7 @@ const Team = () => {
       <Form.Label>Add team </Form.Label>
       <Form.Control
         type="text"
-        placeholder="Enter a lastname.."
+        placeholder={`${teamToGet.lastName}`}
         name="lastName"
         value={newTeam.lastName}
         onChange={handleChange}
@@ -36,20 +42,18 @@ const Team = () => {
       <Form.Label>Add team </Form.Label>
       <Form.Control
         type="text"
-        placeholder="Enter a poste.."
+        placeholder={`${teamToGet.poste}`}
         name="poste"
         value={newTeam.poste}
         onChange={handleChange}
       />
       <Link to="/team">
-        <Button variant="primary" type="submit" onClick={() => add()}>
-          Add new Team..
+        <Button variant="primary" type="submit" onClick={handleEdit}>
+          Edit Team..
         </Button>
       </Link>
-
-      <TeamList />
     </div>
   );
 };
 
-export default Team;
+export default Edit;

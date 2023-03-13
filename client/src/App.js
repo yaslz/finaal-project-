@@ -8,6 +8,8 @@ import Errors from "./Pages/Errors";
 import Home from "./Pages/Home";
 // import { useEffect } from "react";
 import Team from "../src/Pages/Team";
+import Edit from "./Pages/Edit";
+import Contact from "./Pages/Contact";
 
 function App() {
   // const dispatch = useDispatch();
@@ -23,6 +25,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/team" element={<Team />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/edit/:id" element={<Edit />} />
         <Route path="/*" element={<Errors />} />
       </Routes>
     </div>

@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getTeams } from "../JS/Actions/team";
 import TeamCard from "../Components/TeamCard";
+import "./teamlist.css";
 
 const TeamList = () => {
   const listTeams = useSelector((state) => state.teamReducer.listTeams);
@@ -12,7 +13,7 @@ const TeamList = () => {
   }, [dispatch]);
 
   return (
-    <div>
+    <div className="list">
       {load ? (
         <h2>LOADING...</h2>
       ) : (
