@@ -5,8 +5,8 @@ const jwt = require("jsonwebtoken");
 
 exports.register = async (req, res) => {
   try {
-    const { name, email, password, phone } = req.body;
-    const foundUser = await User.findOne({ email });
+    const { name, password, phone } = req.body;
+    const foundUser = await User.findOne({ name });
     if (foundUser) {
       return res
         .status(400)
@@ -34,8 +34,8 @@ exports.register = async (req, res) => {
 
 exports.login = async (req, res) => {
   try {
-    const { email, password } = req.body;
-    const foundUser = await User.findOne({ email });
+    const { name, password } = req.body;
+    const foundUser = await User.findOne({ name });
     if (!foundUser) {
       return res.status(400).send({ errors: [{ msg: "Bad credential ! " }] });
     }

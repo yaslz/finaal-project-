@@ -36,7 +36,7 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-router.delete("/:id", async (req, res) => {
+router.delete("/:_id", async (req, res) => {
   try {
     const { _id } = req.params;
     await Team.findOneAndDelete({ _id });
@@ -46,7 +46,7 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
-router.put("/:id", async (req, res) => {
+router.put("/:_id", async (req, res) => {
   try {
     const { _id } = req.params;
     const result = await Team.updateOne({ _id }, { $set: { ...req.body } });

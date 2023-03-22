@@ -17,7 +17,7 @@ const Edit = () => {
     dispatch(getTeam(match.params.id));
   });
   const handleEdit = () => {
-    dispatch(editTeam(match.params));
+    dispatch(editTeam(match.params.id, newTeam));
     navigate(-1);
   };
 

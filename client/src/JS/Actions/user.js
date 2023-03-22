@@ -1,5 +1,4 @@
-
-  import axios from "axios";
+import axios from "axios";
 import { CURRENT_USER, FAIL_USER, LOAD_USER, LOGOUT_USER, SUCC_USER } from "../ActionTypes/user";
   
   export const register = (newUser) => async (dispatch) => {
@@ -40,4 +39,6 @@ import { CURRENT_USER, FAIL_USER, LOAD_USER, LOGOUT_USER, SUCC_USER } from "../A
   export const logout = () => async (dispatch) => {
     dispatch({ type: LOGOUT_USER});
   };
+  
+
   

@@ -41,6 +41,7 @@ const Team = () => {
         value={newTeam.poste}
         onChange={handleChange}
       />
+      
       <Link to="/team">
         <Button variant="primary" type="submit" onClick={() => add()}>
           Add new Team..

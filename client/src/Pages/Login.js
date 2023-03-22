@@ -17,15 +17,15 @@ const Login = () => {
   const handleUser = (e) => {
     e.preventDefault();
     dispatch(login(user));
-    navigate("/profile");
+    // navigate("/Profile");
   };
   return (
     <div>
-      <Form.Label>Email address</Form.Label>
+      <Form.Label>Name</Form.Label>
       <Form.Control
-        type="email"
-        placeholder="Enter email"
-        name="email"
+        type="text"
+        placeholder="Enter name"
+        name="name"
         onChange={handleChange}
       />
       <Form.Label>Password</Form.Label>
@@ -43,3 +43,4 @@ const Login = () => {
 };
 
 export default Login;
+

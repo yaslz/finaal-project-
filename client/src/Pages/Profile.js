@@ -10,8 +10,8 @@ const Profile = () => {
         <Card.Img variant="top" src="holder.js/100px180" />
         <Card.Body>
           <Card.Title>{user && user.name}</Card.Title>
-          <Card.Text>{user && user.email}</Card.Text>
-          <Card.Text>{user && user.phone}</Card.Text>
+          <Card.Text>{user && user.lastName}</Card.Text>
+          <Card.Text>{user && user.poste}</Card.Text>
           <Button variant="primary">Go somewhere</Button>
         </Card.Body>
       </Card>
